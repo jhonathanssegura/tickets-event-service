@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "519ef092-bf7d-4e0f-b92b-c5fc2c210265",
+		"name": "Ticket Events API",
+		"description": "Colección para probar la API de gestión de eventos y categorías.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8025593"
+	},
+	"item": [
+		{
+			"name": "Eventos",
+			"item": [
+				{
+					"name": "Listar Eventos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/api/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Evento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Concierto de Rock\",\n  \"description\": \"Un increíble concierto de rock en vivo\",\n  \"date\": \"2024-12-25T20:00:00Z\",\n  \"location\": \"Estadio Nacional\",\n  \"capacity\": 50000,\n  \"price\": 75.50,\n  \"category_id\": \"cat-001\",\n  \"organizer\": \"Producciones Musicales S.A.\",\n  \"status\": \"active\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8084/api/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Evento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/api/events/evt-001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"events",
+								"evt-001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Evento",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Concierto de Rock Actualizado\",\n  \"description\": \"Un increíble concierto de rock en vivo con artistas internacionales\",\n  \"date\": \"2024-12-25T21:00:00Z\",\n  \"location\": \"Estadio Nacional - VIP\",\n  \"capacity\": 60000,\n  \"price\": 85.00,\n  \"category_id\": \"cat-001\",\n  \"organizer\": \"Producciones Musicales S.A.\",\n  \"status\": \"active\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8084/api/events/evt-001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"events",
+								"evt-001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Evento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/api/events/evt-001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"events",
+								"evt-001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categorías",
+			"item": [
+				{
+					"name": "Crear Categoría",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Música\",\n  \"description\": \"Eventos musicales y conciertos\",\n  \"color\": \"#FF6B6B\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8084/api/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "QR Codes",
+			"item": [
+				{
+					"name": "Generar QR para Evento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"event_id\": \"evt-001\",\n  \"size\": 256,\n  \"include_logo\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8084/api/qr/generate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"qr",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validar QR de Evento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"qr_content\": \"EVENT:evt-001:VALIDATED:2024-12-25T20:00:00Z\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8084/api/qr/validate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"api",
+								"qr",
+								"validate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Health Check",
+			"item": [
+				{
+					"name": "Verificar Estado del Servicio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+} 
