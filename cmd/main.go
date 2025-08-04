@@ -31,7 +31,7 @@ func main() {
 
 	handlerEvent := handler.NewEventHandler(sqsClient, dynamoClient)
 	handlerCategory := handler.NewCategoryHandler(dynamoClient)
-	handlerQR := handler.NewQRHandler(dynamoClient)
+	// handlerQR := handler.NewQRHandler(dynamoClient)
 
 	r := gin.Default()
 
@@ -45,9 +45,7 @@ func main() {
 		api.DELETE("/events/:id", handlerEvent.DeleteEvent)
 		// Category endpoint
 		api.POST("/categories", handlerCategory.CreateCategory)
-		// QR code endpoints
-		api.GET("/events/:id/qr", handlerQR.GetEventQR)
-		api.POST("/qr/validate", handlerQR.ValidateQR)
+		// QR code endpoints eliminados
 	}
 
 	log.Println("🚀 Iniciando servidor de eventos en puerto 8080...")
